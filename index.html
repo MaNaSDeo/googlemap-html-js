@@ -7,6 +7,28 @@
         height: 100vh;
         width: 100%;
       }
+      .info-container {
+        padding-top: 8px;
+      }
+      .gm-style .gm-style-iw-d::-webkit-scrollbar-track,
+      .gm-style .gm-style-iw-d::-webkit-scrollbar-track-piece,
+      .gm-style .gm-style-iw-c,
+      .gm-style .gm-style-iw-t::after {
+        background: #84adf0;
+      }
+      .gm-style .gm-style-iw-tc::after {
+        background: #84adf0;
+      }
+      .location-name {
+        color: white;
+        font-weight: 700;
+        margin: 0 0 6px 0;
+      }
+      .truck-details {
+        color: white;
+        font-size: 500;
+        margin: 0;
+      }
     </style>
     <script>
       function initMap() {
@@ -44,7 +66,7 @@
           });
 
           const infoWindow = new google.maps.InfoWindow({
-            content: `<div><strong>${data.title}</strong><br>${data.details}</div>`,
+            content: `<div class="info-container"><p class="location-name">${data.title}</p><p class="truck-details">${data.details}</p></div>`,
           });
 
           // Open info window by default
