@@ -49,6 +49,12 @@
 
           // Open info window by default
           infoWindow.open(map, marker);
+
+          google.maps.event.addListener(infoWindow, "domready", function () {
+            document.querySelectorAll(".gm-style-iw-chr").forEach((btn) => {
+              btn.style.setProperty("display", "none", "important");
+            });
+          });
         });
       }
     </script>
