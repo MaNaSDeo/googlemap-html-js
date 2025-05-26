@@ -2,6 +2,23 @@ function initMap() {
   const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 22.9734, lng: 78.6569 },
     zoom: 5,
+    maxZoom: 7,
+    minZoom: 3,
+    zoomControl: true,
+    zoomControlOptions: {
+      position: google.maps.ControlPosition.LEFT_BOTTOM, // position of zoom buttons TOP_LEFT, TOP_CENTER, TOP_RIGHT, LEFT_TOP, RIGHT_TOP, LEFT_CENTER, RIGHT_CENTER, BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT
+    },
+    scaleControl: true,
+    fullscreenControl: true,
+    mapTypeControl: true,
+    mapTypeControlOptions: {
+      style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+      position: google.maps.ControlPosition.TOP_CENTER,
+    },
+    streetViewControl: true,
+    streetViewControlOptions: {
+      position: google.maps.ControlPosition.LEFT_TOP,
+    },
   });
 }
 
