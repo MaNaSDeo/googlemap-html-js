@@ -1,102 +1,18 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <title>Static Google Map with Markers and Info Windows</title>
-    <style>
-      #map {
-        height: 100vh;
-        width: 100%;
-      }
-      .info-container {
-        padding-top: 8px;
-      }
-      .gm-style .gm-style-iw-d::-webkit-scrollbar-track,
-      .gm-style .gm-style-iw-d::-webkit-scrollbar-track-piece,
-      .gm-style .gm-style-iw-c,
-      .gm-style .gm-style-iw-t::after {
-        background: #84adf0;
-      }
-      .gm-style .gm-style-iw-tc::after {
-        background: #84adf0;
-      }
-      .location-name {
-        color: white;
-        font-weight: 700;
-        margin: 0 0 6px 0;
-      }
-      .truck-details {
-        color: white;
-        font-size: 500;
-        margin: 0;
-      }
-    </style>
-    <script>
-      function initMap() {
-        // Initial center and zoom
-        const map = new google.maps.Map(document.getElementById("map"), {
-          //   center: { lat: 22.9734, lng: 78.6569 }, // Center of India
-          //   zoom: 5,
-          center: { lat: 0, lng: 0 },
-          zoom: 2,
-        });
-
-        const bounds = new google.maps.LatLngBounds();
-
-        // Mock data for markers
-        const markerData = [
-          {
-            position: { lat: 28.6139, lng: 77.209 },
-            title: "New Delhi",
-            details: "Capital of India",
-          },
-          {
-            position: { lat: 19.076, lng: 72.8777 },
-            title: "Mumbai",
-            details: "Financial Capital",
-          },
-          {
-            position: { lat: 13.0827, lng: 80.2707 },
-            title: "Chennai",
-            details: "Cultural Capital of South India",
-          },
-        ];
-
-        // Loop through data and add markers + info windows
-        markerData.forEach((data) => {
-          const marker = new google.maps.Marker({
-            position: data.position,
-            map: map,
-            title: data.title,
-          });
-
-          const infoWindow = new google.maps.InfoWindow({
-            content: `<div class="info-container"><p class="location-name">${data.title}</p><p class="truck-details">${data.details}</p></div>`,
-          });
-
-          // Open info window by default
-          infoWindow.open(map, marker);
-
-          bounds.extend(data.position);
-
-          google.maps.event.addListener(infoWindow, "domready", function () {
-            document.querySelectorAll(".gm-style-iw-chr").forEach((btn) => {
-              btn.style.setProperty("display", "none", "important");
-            });
-          });
-        });
-
-        map.fitBounds(bounds);
-      }
-    </script>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div id="map"></div>
+    <div id="root"></div>
 
-    <!-- Load Google Maps JS API -->
-    <script
-      async
-      defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzXiqT7YjUhXvqeD2hzgU6oZc65dqnClQ&callback=initMap"
-    ></script>
+    <!-- Load config first -->
+    <script src="config.js"></script>
+    <!-- Load main JS -->
+    <script src="main.js"></script>
+
+    <script src="map.js"></script>
+    <!-- Google Maps API script will be dynamically injected in main.js -->
   </body>
 </html>
