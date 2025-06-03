@@ -1,3 +1,8 @@
+function myFuntion() {
+  if (window.map) map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
+  else console.warn("Map not initialized yet.");
+}
+
 function createHeader() {
   const header = document.createElement("header");
 
@@ -7,7 +12,12 @@ function createHeader() {
   const h1 = document.createElement("h1");
   h1.textContent = "First Web Mapping Application";
 
+  const button = document.createElement("button");
+  button.textContent = "Switch to Terrain";
+  button.onclick = myFuntion;
+
   innerTube.appendChild(h1);
+  innerTube.appendChild(button);
   header.appendChild(innerTube);
 
   return header;

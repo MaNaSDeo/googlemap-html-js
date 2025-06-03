@@ -14,7 +14,7 @@ body {
   footer {
     background-color: rgba(0, 0, 0, 0.4); /* black with 40% opacity */
     color: white;
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
     z-index: 1;
     display: flex;

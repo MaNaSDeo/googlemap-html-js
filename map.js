@@ -1,5 +1,7 @@
+let map; //Declared globally
+
 function initMap() {
-  const map = new google.maps.Map(document.getElementById("map"), {
+  map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 22.9734, lng: 78.6569 },
     zoom: 5,
     maxZoom: 7,
@@ -15,6 +17,7 @@ function initMap() {
       style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
       position: google.maps.ControlPosition.TOP_CENTER,
     },
+    mapTypeId: google.maps.MapTypeId.SATELLITE,
     streetViewControl: true,
     streetViewControlOptions: {
       position: google.maps.ControlPosition.LEFT_TOP,
