@@ -1,6 +1,21 @@
-function myFuntion() {
+function terrainFuntion() {
   if (window.map) map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
   else console.warn("Map not initialized yet.");
+}
+
+function markerFunction() {
+  if (window.map) {
+    const LAL_QILA_Marker = new google.maps.Marker({
+      position: {
+        lat: 28.6562,
+        lng: 77.241,
+      },
+      label: "A",
+      title: "Hello I'm Eiffel",
+    });
+
+    LAL_QILA_Marker.setMap(map);
+  }
 }
 
 function createHeader() {
@@ -12,15 +27,28 @@ function createHeader() {
   const h1 = document.createElement("h1");
   h1.textContent = "First Web Mapping Application";
 
-  const button = document.createElement("button");
-  button.textContent = "Switch to Terrain";
-  button.onclick = myFuntion;
-
   innerTube.appendChild(h1);
-  innerTube.appendChild(button);
   header.appendChild(innerTube);
 
   return header;
+}
+
+function buttonContainers() {
+  const container = document.createElement("div");
+  container.className = "button-container";
+
+  const terrainButton = document.createElement("button");
+  terrainButton.textContent = "Switch to Terrain";
+  terrainButton.onclick = terrainFuntion;
+
+  const markerButton = document.createElement("button");
+  markerButton.textContent = "Eiffel Tower";
+  markerButton.onclick = markerFunction;
+
+  container.appendChild(terrainButton);
+  container.appendChild(markerButton);
+
+  return container;
 }
 
 function createMapContainer() {
@@ -48,6 +76,7 @@ function init() {
   const root = document.getElementById("root");
 
   root.appendChild(createHeader());
+  root.appendChild(buttonContainers());
   root.appendChild(createMapContainer());
   root.appendChild(createFooter());
 

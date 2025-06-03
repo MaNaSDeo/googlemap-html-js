@@ -39,6 +39,12 @@ body {
       margin-right: 4rem;
     }
   }
+
+  .button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 /* Box sizing reset */
