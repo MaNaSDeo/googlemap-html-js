@@ -45,6 +45,35 @@ function polylineFunction() {
   }
 }
 
+const delhiBoundary = [
+  { lat: 28.8832, lng: 76.9991 }, // North West
+  { lat: 28.8784, lng: 77.089 }, // North Delhi
+  { lat: 28.7996, lng: 77.1185 }, // West Delhi
+  { lat: 28.6925, lng: 77.1553 }, // South West
+  { lat: 28.5708, lng: 77.2486 }, // South Delhi
+  { lat: 28.5245, lng: 77.2851 }, // South-East Delhi
+  { lat: 28.6106, lng: 77.3503 }, // East Delhi
+  { lat: 28.7154, lng: 77.2903 }, // North-East Delhi
+  { lat: 28.8008, lng: 77.233 }, // North-Central
+  { lat: 28.8594, lng: 77.1203 }, // North-West return
+];
+
+function polygonFunction() {
+  if (window.map) {
+    const delhiPolygon = new google.maps.Polygon({
+      paths: delhiBoundary,
+      geodesic: true,
+      strokeColor: "#fff",
+      strokeColor: 0.75,
+      strokeWeight: 3,
+      fillColor: "red",
+      fillOpacity: 0.5,
+    });
+
+    delhiPolygon.setMap(map);
+  }
+}
+
 function createHeader() {
   const header = document.createElement("header");
 
@@ -76,9 +105,14 @@ function buttonContainers() {
   polylineButton.textContent = "Path to home";
   polylineButton.onclick = polylineFunction;
 
+  const polygonButton = document.createElement("button");
+  polygonButton.textContent = "Delhi borders";
+  polygonButton.onclick = polygonFunction;
+
   container.appendChild(terrainButton);
   container.appendChild(markerButton);
   container.appendChild(polylineButton);
+  container.appendChild(polygonButton);
 
   return container;
 }
